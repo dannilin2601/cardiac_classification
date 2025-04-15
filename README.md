@@ -63,8 +63,8 @@ Training Info:
 📌 Conclusion
 ============
 
-Our results demonstrate that large models like ResNet152 are not necessarily required to achieve strong performance on the EchoNet-Dynamic classification task. In fact, ResNet18 — a significantly smaller model with fewer parameters and lower computational cost — achieved comparable or even better test accuracy and AUROC in several configurations. 
+Our results demonstrate that large models like ResNet152 are not strictly necessary to achieve competitive performance on the EchoNet-Dynamic classification task. Smaller architectures such as ResNet18 performed comparably well in terms of accuracy and AUROC, while requiring significantly fewer parameters and computational resources.
 
-Additionally, applying class weighting during training proved to be beneficial, especially in handling the class imbalance present in the dataset. Weighted loss functions led to noticeable improvements in AUROC and AUPRC, making the model more robust for clinical classification tasks involving underrepresented categories.
+We also evaluated the impact of applying class weighting to address class imbalance. However, the use of weighted loss functions did not lead to noticeable improvements in AUROC or AUPRC, suggesting that class imbalance in this dataset may not substantially hinder model performance.
 
-In summary, efficient model design and thoughtful training strategies can yield high-performing classifiers without the overhead of deep architectures.
+In summary, compact models paired with standard training techniques can be sufficient for ejection fraction classification, offering a more computationally efficient and scalable alternative for clinical applications.
