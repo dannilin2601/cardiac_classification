@@ -81,7 +81,7 @@ Building on Stage 1, we extend the trained model to perform transfer learning on
 🧹 Step 1: Image Preprocessing via Optical Flow
 -----------------------------------------------
 
-To enhance the quality of visual representations, we apply a masking pipeline using optical flow to localize motion-heavy cardiac regions.
+To mimic the original echonet dataset structure, we apply a masking pipeline using optical flow to localize motion-heavy cardiac regions.
 
 Steps:
 - Load grayscale frames from echocardiogram videos
@@ -94,7 +94,35 @@ Steps:
 
 ![LV Optical Flow Masking](images/optical_flow_masking_example.png)
 
-This highlights the dynamic left ventricle area, improving the quality of extracted representations for survival prediction tasks.
+🧠 Step 2: Transfer Learning with Echonet Weights 
+-----------------------------------------------
+
+In the second stage of this project, we applied transfer learning by leveraging weights pre-trained on the EchoNet-Dynamic dataset. These were used to initialize a model and fine-tune it on a **small LVAD dataset (34 samples)**, aiming to classify whether a patient with a Left Ventricular Assist Device (LVAD) would survive (0) or die (1).
+
+🏋️ Training Configuration
+
+- **Task**: Binary classification (LVAD patient mortality)
+- **Transfer strategy**: Fine-tune on small dataset using weights from the first stage
+- **Architecture**: Pre-trained CNN + Fully connected layers
+- **Parameters tuned**: Fully connected dropout / CNN dropout / L1 regularization
+- **Cross-validation**: Evaluated under 2, 3, 5, and 7-fold splits
+
+📊 Performance Summary
+-----------------------------------------------
+
+|   K-Fold | Model   | Dropout/Reg   | Test Acc (±)   | Train Acc (±)   | Test AUROC (±)   | Train AUROC (±)   | Test AUPRC (±)   | Train AUPRC (±)   |
+|----------|---------|---------------|----------------|-----------------|------------------|-------------------|------------------|-------------------|
+|        7 | (b)     | 0.8/0.1/0.8   | 0.700 ± 0.173  | 0.790 ± 0.124   | 0.690 ± 0.329    | 0.895 ± 0.059     | 0.530 ± 0.441    | 0.719 ± 0.086     |
+|        5 | (b)     | 0.9/0.1/0.9   | 0.733 ± 0.160  | 0.816 ± 0.123   | 0.760 ± 0.434    | 0.884 ± 0.153     | 0.758 ± 0.398    | 0.720 ± 0.243     |
+|        3 | (b)     | 0.8/0.095/0.8 | 0.629 ± 0.328  | 0.599 ± 0.384   | 0.698 ± 0.233    | 0.798 ± 0.054     | 0.422 ± 0.320    | 0.617 ± 0.053     |
+|        2 | (b)     | 0.8/0.3/0.8   | 0.794 ± 0.042  | 0.829 ± 0.040   | 0.548 ± 0.068    | 0.690 ± 0.118     | 0.442 ± 0.002    | 0.455 ± 0.267     |
+
+📌 Observations
+
+- Best performance in terms of **AUROC and AUPRC** was observed with 5-fold training (AUROC = 0.76, AUPRC = 0.76).
+- **Higher dropout** consistently helped reduce overfitting.
+- Variance across folds (standard deviation) was larger for smaller splits, as expected with limited data.
+
 
 💻 Computational Environment
 ----------------------------
