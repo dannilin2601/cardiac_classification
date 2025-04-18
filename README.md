@@ -1,34 +1,46 @@
-🫀 EchoNet-Dynamic: Ejection Fraction Classification
-====================================================
+🫀 EchoNet-Dynamic: Ejection Fraction Classification & Transfer Learning
+=========================================================================
 
-This repository provides tools and code to utilize the EchoNet-Dynamic dataset (https://echonet.github.io/dynamic/) for classifying cardiac function based on left ventricular ejection fraction (LVEF). The dataset comprises over 10,000 apical-4-chamber echocardiogram videos, each annotated with clinical measurements such as EF, end-systolic volume (ESV), and end-diastolic volume (EDV).
+This repository consolidates two stages of a research pipeline leveraging the EchoNet-Dynamic dataset for cardiac function analysis:
+
+1. **Stage 1:** Classification of left ventricular ejection fraction (LVEF) from echocardiogram videos.
+2. **Stage 2:** Transfer learning to smaller clinical datasets using extracted visual representations and survival prediction models.
 
 📊 Dataset Overview
 -------------------
 
-- Source: Stanford University School of Medicine
-- Content: 10,030 apical-4-chamber echocardiogram videos
-- Annotations: Each video includes:
-  - Left ventricular ejection fraction (EF)
-  - End-systolic volume (ESV)
-  - End-diastolic volume (EDV)
-  - Expert tracings of the left ventricle at end-systole and end-diastole
-- Format: Videos are standardized to 112×112 pixels and de-identified to ensure patient privacy
+This project leverages two distinct datasets across its two stages:
 
-🎯 Objective
-------------
+1. **EchoNet-Dynamic (Source Dataset)**  
+   - **Source**: Stanford University School of Medicine  
+   - **Content**: 10,030 apical-4-chamber echocardiogram videos  
+   - **Annotations per video**:
+     - Left ventricular ejection fraction (EF)
+     - End-systolic volume (ESV)
+     - End-diastolic volume (EDV)
+     - Expert tracings of the left ventricle at key phases
+   - **Format**: Videos are standardized to 112×112 pixels, grayscale, and de-identified
 
-The primary goal is to classify echocardiogram videos into categories based on their ejection fraction:
+2. **LVAD Clinical Dataset (Target Dataset for Transfer Learning)**  
+   - **Content**: 34 patient records from a hospital cohort undergoing Left Ventricular Assist Device (LVAD) implantation  
+   - **Task**: Binary classification  
+     - 1 = Patient died post-implantation  
+     - 0 = Patient survived  
+   - **Challenge**: Extremely limited sample size, high clinical relevance  
+   - **Objective**: Leverage pretrained representations from the source domain to improve predictive power in this data-scarce setting
 
-- Normal EF: EF ≥ 50%
-- Reduced EF: EF < 50%
 
-This classification aids in the diagnosis of conditions like heart failure with reduced ejection fraction (HFrEF).
+🎯 Stage 1: EF Classification
+------------------------------
 
-📈 Results
-==========
+The goal of Stage 1 is to classify echocardiogram videos into:
 
-We evaluated the performance of ResNet18 and ResNet152 models for classifying ejection fraction status on the EchoNet-Dynamic dataset across different input video resolutions. The classification threshold for EF was set at 50%.
+- **Normal EF:** EF ≥ 50%
+- **Reduced EF:** EF < 50%
+
+This helps in diagnosing heart failure with reduced ejection fraction (HFrEF).
+
+We evaluated ResNet18 and ResNet152 architectures across multiple video input sizes:
 
 ResNet18 Results
 ----------------
@@ -41,10 +53,6 @@ ResNet18 Results
 | 56x56 (w)     | 0.92      | 0.86    | 0.85     | 0.90   | 0.86   |
 | 112x112 (w)   | 0.94      | 0.88    | 0.86     | 0.88   | 0.86   |
 
-Notes:
-- (w) = weighted evaluation under class imbalance.
-- Trainable Parameters: ~66.35M
-
 ResNet152 Results
 -----------------
 | Input Size    | Train Acc | Val Acc | Test Acc | AUROC | AUPRC |
@@ -53,18 +61,45 @@ ResNet152 Results
 | 56x56         | 0.92      | 0.87    | 0.86     | 0.89   | 0.75   |
 | 112x112       | 0.98      | 0.86    | 0.85     | 0.84   | 0.68   |
 
-- Trainable Parameters: ~236.19M
-- FLOPs: from 1.8B (28x28) to 11.3B (112x112)
+Notes:
+- (w) = weighted evaluation under class imbalance.
+- Trainable Parameters: ResNet18 ~66.35M, ResNet152 ~236.19M
+- Training Epochs: 2–9, Batch Sizes: 8 or 16
 
-Training Info:
-- Epochs ranged from 2 to 9
-- Batch sizes of 8 or 16 were used
+📌 Conclusion (Stage 1)
+-----------------------
 
-📌 Conclusion
-============
+- Smaller models (e.g., ResNet18) can match the performance of larger networks like ResNet152.
+- Class weighting did not provide a significant boost in performance.
+- Compact models offer a computationally efficient solution for clinical deployment.
 
-Our results demonstrate that large models like ResNet152 are not strictly necessary to achieve competitive performance on the EchoNet-Dynamic classification task. Smaller architectures such as ResNet18 performed comparably well in terms of accuracy and AUROC, while requiring significantly fewer parameters and computational resources.
+🧠 Stage 2: Transfer Learning to Smaller Clinical Datasets
+-----------------------------------------------------------
 
-We also evaluated the impact of applying class weighting to address class imbalance. However, the use of weighted loss functions did not lead to noticeable improvements in AUROC or AUPRC, suggesting that class imbalance in this dataset may not substantially hinder model performance.
+Building on Stage 1, we extend the trained model to perform transfer learning on smaller survival datasets. This is critical for real-world hospital settings where data is limited.
 
-In summary, compact models paired with standard training techniques can be sufficient for ejection fraction classification, offering a more computationally efficient and scalable alternative for clinical applications.
+🧹 Step 1: Image Preprocessing via Optical Flow
+-----------------------------------------------
+
+To enhance the quality of visual representations, we apply a masking pipeline using optical flow to localize motion-heavy cardiac regions.
+
+Steps:
+- Load grayscale frames from echocardiogram videos
+- Compute dense optical flow between consecutive frames
+- Calculate the average flow magnitude across all frames
+- Generate a convex hull over high-motion pixels
+- Mask out non-cardiac regions and save the result
+
+📸 Motion Masking Example
+
+![LV Optical Flow Masking](images/optical_flow_masking_example.png)
+
+This highlights the dynamic left ventricle area, improving the quality of extracted representations for survival prediction tasks.
+
+💻 Computational Environment
+----------------------------
+
+All experiments and model training were conducted in **Kaggle Notebooks** using a standardized runtime environment. This GitHub repository contains the core components necessary for reproducibility.
+- Preprocessing scripts
+- Core classification/transfer utilities
+- Model definitions
