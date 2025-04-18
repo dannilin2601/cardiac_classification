@@ -4,7 +4,7 @@
 This repository consolidates two stages of a research pipeline leveraging the EchoNet-Dynamic dataset for cardiac function analysis:
 
 1. **Stage 1:** Classification of left ventricular ejection fraction (LVEF) from echocardiogram videos.
-2. **Stage 2:** Transfer learning to smaller clinical datasets using extracted visual representations and survival prediction models.
+2. **Stage 2:** Transfer learning to smaller clinical datasets.
 
 📊 Dataset Overview
 -------------------
