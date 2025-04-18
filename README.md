@@ -127,7 +127,7 @@ In the second stage of this project, we applied transfer learning by leveraging 
 💻 Computational Environment
 ----------------------------
 
-All experiments and model training were conducted in **Kaggle Notebooks** using a standardized runtime environment. This GitHub repository contains the core components necessary for reproducibility.
+All experiments and model training were conducted in **Kaggle Notebooks** using a standardized runtime environment. This GitHub repository contains the core components necessary.
 - Preprocessing scripts
 - Core classification/transfer utilities
 - Model definitions
