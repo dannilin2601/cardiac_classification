@@ -152,17 +152,9 @@ In the second stage of this project, we applied transfer learning by leveraging 
 |        3 | (b)     | 0.8/0.095/0.8 | 0.629 ± 0.328  | 0.599 ± 0.384   | 0.698 ± 0.233    | 0.798 ± 0.054     | 0.422 ± 0.320    | 0.617 ± 0.053     |
 |        2 | (b)     | 0.8/0.3/0.8   | 0.794 ± 0.042  | 0.829 ± 0.040   | 0.548 ± 0.068    | 0.690 ± 0.118     | 0.442 ± 0.002    | 0.455 ± 0.267     |
 
-#### Conclusions #### 
+#### Conclusion (Stage 2) #### 
 
 - Best performance in terms of **AUROC and AUPRC** was observed with 5-fold training (AUROC = 0.76, AUPRC = 0.76).
 - **Higher dropout** consistently helped reduce overfitting.
 - Variance across folds (standard deviation) was larger for smaller splits, as expected with limited data.
 
-
-## __Computational Environment__ ## 
-----------------------------
-
-All experiments and model training were conducted in **Kaggle Notebooks** using a standardized runtime environment. This GitHub repository contains the core components necessary.
-- Preprocessing scripts
-- Core classification/transfer utilities
-- Model definitions
