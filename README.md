@@ -27,9 +27,9 @@
 This repository consolidates two stages of a research pipeline leveraging the EchoNet-Dynamic dataset for 1-year survival classification purposes:
 
 1. **Stage 1:** Train a classification model, where we aim to differentiate patients based on left ventricular ejection fraction (LVEF) values from echocardiogram videos.
-2. **Stage 2:** With the model trained on stage 1, we aim to use Transfer learning methodology to train a smaller clinical datasets to classify wether a patient is going to survive or not in a 1 year time frame.
+2. **Stage 2:** With the model trained on stage 1, we aim to use transfer learning methodology to train a smaller clinical datasets to classify wether a patient is going to survive or not in a 1 year time frame.
 
-## __ 📊 Dataset Overview__ ##
+## __📊 Dataset Overview__ ##
 
 This project leverages two distinct datasets across its two stages:
 
