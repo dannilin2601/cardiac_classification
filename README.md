@@ -11,9 +11,9 @@
 
 <ul>
 
-  [3.1. Stage 1: EF Classification](#stage_1_:_ef_classification)
+  [3.1. Stage 1: EF Classification](#stage_1:_ef_classification)
 
-  [3.2. Stage 2: Transfer Learning to Smaller Clinical Datasets](#stage_2_:_transfer_learning_to_smaller_clinical_datasets)
+  [3.2. Stage 2: Transfer Learning to Smaller Clinical Datasets](#stage_2:_transfer_learning_to_smaller_clinical_datasets)
 
 
 </ul>
