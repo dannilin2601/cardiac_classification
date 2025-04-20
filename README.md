@@ -1,4 +1,4 @@
-# 🫀 Survival Classification & Transfer Learning on Echocardiograms
+# Survival Classification & Transfer Learning on Echocardiograms
 
 ## __Table of Contents__ ##
 <ul>
