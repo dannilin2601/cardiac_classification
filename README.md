@@ -11,9 +11,9 @@
 
 <ul>
 
-  [3.1. Stage 1. EF Classification](#stage-1-ef-classification)
+  [3.1. Stage 1: EF Classification](#stage-1-ef-classification)
 
-  [3.2. Stage 2. Transfer Learning to Smaller Clinical Datasets](#stage-2-transfer-learning-to-smaller-clinical-datasets)
+  [3.2. Stage 2: Transfer Learning to Smaller Clinical Datasets](#stage-2-transfer-learning-to-smaller-clinical-datasets)
 
 
 </ul>
@@ -46,7 +46,7 @@ This project leverages two distinct datasets across its two stages:
      - 0 = Patient survived more than a year
 
 ## __Phases of the project__ ##
-### Stage 1. EF Classification ###
+### Stage 1: EF Classification ###
 
 The goal of Stage 1 is to classify echocardiogram videos into:
 
@@ -88,7 +88,7 @@ Notes:
 - Class weighting did not provide a significant boost in performance.
 - Compact models offer a computationally efficient solution for clinical deployment.
 
-### __Stage 2. Transfer Learning to Smaller Clinical Datasets__ ### 
+### __Stage 2: Transfer Learning to Smaller Clinical Datasets__ ### 
 -----------------------------------------------------------
 
 Building on Stage 1, we extend the trained model to perform transfer learning on smaller survival datasets. This is critical for real-world hospital settings where data is limited.
