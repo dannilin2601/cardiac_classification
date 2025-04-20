@@ -50,7 +50,7 @@ This project leverages two distinct datasets across its two stages:
 
 ## __Tools and libraries__ ##
 
-This project was done in Python using Jupyter Notebooks and runned on Kaggle using GPU.
+This project was done in Python using Jupyter Notebooks and runned on Kaggle using GPU when training models.
 
 The libraries used are:
 * __Pandas and Numpy__: for exploration, cleaning and analysis
