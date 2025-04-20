@@ -29,7 +29,7 @@ This repository consolidates two stages of a research pipeline leveraging the Ec
 1. **Stage 1:** Train a classification model, where we aim to differentiate patients based on left ventricular ejection fraction (LVEF) values from echocardiogram videos.
 2. **Stage 2:** With the model trained on stage 1, we aim to use transfer learning methodology to train a smaller clinical datasets to classify wether a patient is going to survive or not in a 1 year time frame.
 
-## __📊 Dataset Overview__ ##
+## __Dataset Overview__ ##
 
 This project leverages two distinct datasets across its two stages:
 
@@ -52,7 +52,7 @@ This project leverages two distinct datasets across its two stages:
    - **Objective**: Leverage pretrained representations from the source domain to improve predictive power in this data-scarce setting
 
 
-## __🎯 Stage 1: EF Classification__ ## 
+## __Stage 1: EF Classification__ ## 
 ------------------------------
 
 The goal of Stage 1 is to classify echocardiogram videos into:
@@ -95,7 +95,7 @@ Notes:
 - Class weighting did not provide a significant boost in performance.
 - Compact models offer a computationally efficient solution for clinical deployment.
 
-## __🧠 Stage 2: Transfer Learning to Smaller Clinical Datasets__ ## 
+## __Stage 2: Transfer Learning to Smaller Clinical Datasets__ ## 
 -----------------------------------------------------------
 
 Building on Stage 1, we extend the trained model to perform transfer learning on smaller survival datasets. This is critical for real-world hospital settings where data is limited.
