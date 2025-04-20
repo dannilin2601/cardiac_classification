@@ -11,9 +11,9 @@
 
 <ul>
 
-  [3.1. Stage 1: EF Classification](#ef-classification)
+  [3.1. Stage 1. EF Classification](#stage-1-ef-classification)
 
-  [3.2. Stage 2: Transfer Learning to Smaller Clinical Datasets](#transfer-learning-to-smaller-clinical-datasets)
+  [3.2. Stage 2. Transfer Learning to Smaller Clinical Datasets](#stage-2-transfer-learning-to-smaller-clinical-datasets)
 
 
 </ul>
@@ -46,7 +46,7 @@ This project leverages two distinct datasets across its two stages:
      - 0 = Patient survived more than a year
 
 ## __Phases of the project__ ##
-### EF Classification ###
+### Stage 1. EF Classification ###
 
 The goal of Stage 1 is to classify echocardiogram videos into:
 
@@ -68,7 +68,7 @@ We evaluated ResNet18 and ResNet152 architectures across multiple video input si
 | 56x56 (w)     | 0.92      | 0.86    | 0.85     | 0.90   | 0.86   |
 | 112x112 (w)   | 0.94      | 0.88    | 0.86     | 0.88   | 0.86   |
 
-ResNet152 Results
+#### ResNet152 Results ####
 -----------------
 | Input Size    | Train Acc | Val Acc | Test Acc | AUROC | AUPRC |
 |---------------|-----------|---------|----------|--------|--------|
@@ -88,7 +88,7 @@ Notes:
 - Class weighting did not provide a significant boost in performance.
 - Compact models offer a computationally efficient solution for clinical deployment.
 
-### __Transfer Learning to Smaller Clinical Datasets__ ### 
+### __Stage 2. Transfer Learning to Smaller Clinical Datasets__ ### 
 -----------------------------------------------------------
 
 Building on Stage 1, we extend the trained model to perform transfer learning on smaller survival datasets. This is critical for real-world hospital settings where data is limited.
