@@ -1,13 +1,35 @@
-🫀 EchoNet-Dynamic: Ejection Fraction Classification & Transfer Learning
+# 🫀 Survival Classification & Transfer Learning on Echocardiograms
 =========================================================================
+## __Table of Contents__ ##
+<ul>
 
-This repository consolidates two stages of a research pipeline leveraging the EchoNet-Dynamic dataset for cardiac function analysis:
+[1. About the project](#about-the-project)
 
-1. **Stage 1:** Classification of left ventricular ejection fraction (LVEF) from echocardiogram videos.
-2. **Stage 2:** Transfer learning to smaller clinical datasets.
+[2. About the dataset](#dataset-overview)
 
-📊 Dataset Overview
--------------------
+[3. Phases of the project](#phases-of-the-project)
+
+<ul>
+
+  [3.1. Data Exploration](#1-data-exploration)
+
+  [3.2. Data Cleaning](#2-data-cleaning)
+
+  [3.3. Data Analysis and Visualization](#3-data-analysis-and-visualization)
+
+</ul>
+
+</ul>
+<hr>
+
+## __About the project__ ##
+
+This repository consolidates two stages of a research pipeline leveraging the EchoNet-Dynamic dataset for 1-year survival classification purposes:
+
+1. **Stage 1:** Train a classification model, where we aim to differentiate patients based on left ventricular ejection fraction (LVEF) values from echocardiogram videos.
+2. **Stage 2:** With the model trained on stage 1, we aim to use Transfer learning methodology to train a smaller clinical datasets to classify wether a patient is going to survive or not in a 1 year time frame.
+
+## __ 📊 Dataset Overview__ ##
 
 This project leverages two distinct datasets across its two stages:
 
@@ -24,13 +46,13 @@ This project leverages two distinct datasets across its two stages:
 2. **LVAD Clinical Dataset (Target Dataset for Transfer Learning)**  
    - **Content**: 34 patient records from a hospital cohort undergoing Left Ventricular Assist Device (LVAD) implantation  
    - **Task**: Binary classification  
-     - 1 = Patient died post-implantation  
-     - 0 = Patient survived  
+     - 1 = Patient died less than a year 
+     - 0 = Patient survived more than a year
    - **Challenge**: Extremely limited sample size, high clinical relevance  
    - **Objective**: Leverage pretrained representations from the source domain to improve predictive power in this data-scarce setting
 
 
-🎯 Stage 1: EF Classification
+## __🎯 Stage 1: EF Classification__ ## 
 ------------------------------
 
 The goal of Stage 1 is to classify echocardiogram videos into:
@@ -73,7 +95,7 @@ Notes:
 - Class weighting did not provide a significant boost in performance.
 - Compact models offer a computationally efficient solution for clinical deployment.
 
-🧠 Stage 2: Transfer Learning to Smaller Clinical Datasets
+## __🧠 Stage 2: Transfer Learning to Smaller Clinical Datasets__ ## 
 -----------------------------------------------------------
 
 Building on Stage 1, we extend the trained model to perform transfer learning on smaller survival datasets. This is critical for real-world hospital settings where data is limited.
@@ -124,7 +146,7 @@ In the second stage of this project, we applied transfer learning by leveraging 
 - Variance across folds (standard deviation) was larger for smaller splits, as expected with limited data.
 
 
-💻 Computational Environment
+## __💻 Computational Environment__ ## 
 ----------------------------
 
 All experiments and model training were conducted in **Kaggle Notebooks** using a standardized runtime environment. This GitHub repository contains the core components necessary.
