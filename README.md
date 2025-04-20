@@ -7,19 +7,20 @@
 
 [2. About the dataset](#dataset-overview)
 
-[3. Phases of the project](#phases-of-the-project)
+[3. Tools and libraries](#tools-and-libraries)
+
+[4. Phases of the project](#phases-of-the-project)
 
 <ul>
 
-  [3.1. Stage 1: EF Classification](#stage-1-ef-classification)
+  [4.1. Stage 1: EF Classification](#stage-1-ef-classification)
 
-  [3.2. Stage 2: Transfer Learning to Smaller Clinical Datasets](#stage-2-transfer-learning-to-smaller-clinical-datasets)
+  [4.2. Stage 2: Transfer Learning to Smaller Clinical Datasets](#stage-2-transfer-learning-to-smaller-clinical-datasets)
 
-
-</ul>
 
 </ul>
-<hr>
+
+</ul>
 
 ## __About the project__ ##
 
@@ -44,6 +45,23 @@ This project leverages two distinct datasets across its two stages:
    - **Label**: Binary classification  
      - 1 = Patient died less than a year 
      - 0 = Patient survived more than a year
+
+## __Tools and libraries__ ##
+
+This project was done in Python using Jupyter Notebooks and runned on Kaggle using GPU.
+
+The libraries used are:
+* __Pandas and Numpy__: for exploration, cleaning and analysis
+* __Matplotlib and Seaborn__: for visualizations
+* __NumPy__: for numerical computation and feature processing
+* __Matplotlib and Seaborn__: for data visualization and evaluation metrics (ROC, AUC, PR curves, etc.)
+* __OpenCV (cv2)__: for frame extraction, video manipulation, and temporal slicing
+* __PIL (Pillow)__: for image handling and transformationss
+* __SciPy__: for computing geometric properties like convex hulls
+* __TensorFlow and Keras__: for building and training deep learning models (e.g., Conv3D, Dense layers)
+* __scikit-learn__: for model evaluation (AUROC, AUPRC), confusion matrix, and class balancing
+* __Python Standard Libraries (random, math, os)__: for auxiliary functions and reproducibility
+
 
 ## __Phases of the project__ ##
 ### Stage 1: EF Classification ###
