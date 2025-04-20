@@ -41,10 +41,12 @@ This project leverages two distinct datasets across its two stages:
    - **Format**: Videos are standardized to 112×112 pixels, grayscale, and de-identified
 
 2. **LVAD Clinical Dataset (Target Dataset for Transfer Learning)**  
+   - **Source**: Private clinical dataset
    - **Content**: 34 patient records from a hospital cohort undergoing Left Ventricular Assist Device (LVAD) implantation  
    - **Label**: Binary classification  
      - 1 = Patient died less than a year 
      - 0 = Patient survived more than a year
+   - **Format**: Videos are available as DICOM file
 
 ## __Tools and libraries__ ##
 
