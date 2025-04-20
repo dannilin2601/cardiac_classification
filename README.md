@@ -1,5 +1,5 @@
 # 🫀 Survival Classification & Transfer Learning on Echocardiograms
-=========================================================================
+
 ## __Table of Contents__ ##
 <ul>
 
@@ -11,11 +11,10 @@
 
 <ul>
 
-  [3.1. Data Exploration](#1-data-exploration)
+  [3.1. Stage 1: EF Classification](#stage_1_:_ef_classification)
 
-  [3.2. Data Cleaning](#2-data-cleaning)
+  [3.2. Stage 2: Transfer Learning to Smaller Clinical Datasets](#stage_2_:_transfer_learning_to_smaller_clinical_datasets)
 
-  [3.3. Data Analysis and Visualization](#3-data-analysis-and-visualization)
 
 </ul>
 
@@ -36,24 +35,18 @@ This project leverages two distinct datasets across its two stages:
 1. **EchoNet-Dynamic (Source Dataset)**  
    - **Source**: Stanford University School of Medicine  
    - **Content**: 10,030 apical-4-chamber echocardiogram videos  
-   - **Annotations per video**:
-     - Left ventricular ejection fraction (EF)
-     - End-systolic volume (ESV)
-     - End-diastolic volume (EDV)
-     - Expert tracings of the left ventricle at key phases
+   - **Label**:
+     - Left ventricular ejection fraction (EF) values
    - **Format**: Videos are standardized to 112×112 pixels, grayscale, and de-identified
 
 2. **LVAD Clinical Dataset (Target Dataset for Transfer Learning)**  
    - **Content**: 34 patient records from a hospital cohort undergoing Left Ventricular Assist Device (LVAD) implantation  
-   - **Task**: Binary classification  
+   - **Label**: Binary classification  
      - 1 = Patient died less than a year 
      - 0 = Patient survived more than a year
-   - **Challenge**: Extremely limited sample size, high clinical relevance  
-   - **Objective**: Leverage pretrained representations from the source domain to improve predictive power in this data-scarce setting
 
-
-## __Stage 1: EF Classification__ ## 
-------------------------------
+## __Phases of the project__ ##
+### __Stage 1: EF Classification__ ###
 
 The goal of Stage 1 is to classify echocardiogram videos into:
 
@@ -95,7 +88,7 @@ Notes:
 - Class weighting did not provide a significant boost in performance.
 - Compact models offer a computationally efficient solution for clinical deployment.
 
-## __Stage 2: Transfer Learning to Smaller Clinical Datasets__ ## 
+### __Stage 2: Transfer Learning to Smaller Clinical Datasets__ ### 
 -----------------------------------------------------------
 
 Building on Stage 1, we extend the trained model to perform transfer learning on smaller survival datasets. This is critical for real-world hospital settings where data is limited.
@@ -124,6 +117,8 @@ In the second stage of this project, we applied transfer learning by leveraging 
 🏋️ Training Configuration
 
 - **Task**: Binary classification (LVAD patient mortality)
+     - 1 = Patient died less than a year 
+     - 0 = Patient survived more than a year
 - **Transfer strategy**: Fine-tune on small dataset using weights from the first stage
 - **Architecture**: Pre-trained CNN + Fully connected layers
 - **Parameters tuned**: Fully connected dropout / CNN dropout / L1 regularization
