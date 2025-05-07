@@ -105,7 +105,7 @@ Notes:
 -----------------------
 
 - Smaller models (e.g., ResNet18) can match the performance of larger networks like ResNet152.
-- Class weighting did not provide a significant boost in performance.
+- Class weighting did not provide a significant boost in performance, but could decrease model biase.
 - Compact models offer a computationally efficient solution for clinical deployment.
 
 ### __Stage 2: Transfer Learning to Smaller Clinical Datasets__ ### 
