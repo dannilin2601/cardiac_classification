@@ -35,7 +35,7 @@ This project leverages two distinct datasets across its two stages:
 
 1. **EchoNet-Dynamic (Source Dataset)**  
    - **Source**: Stanford University School of Medicine  
-   - **Content**: 10,030 apical-4-chamber echocardiogram videos  
+   - **Content**: 9,996 apical-4-chamber echocardiogram videos  
    - **Label**:
      - Left ventricular ejection fraction (EF) values
    - **Format**: Videos are standardized to 112×112 pixels, grayscale, and de-identified
